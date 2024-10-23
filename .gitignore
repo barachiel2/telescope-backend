@@ -1,0 +1,33 @@
+# Python related
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.env
+.venv/
+venv/
+ENV/
+env/
+.venv
+
+# Database
+db.sqlite3
+*.db
+
+# Django static files
+staticfiles/
+static/
+
+# Docker
+.env
+*.log
+.DS_Store
+node_modules/
+
+# IDE or OS files
+.vscode/
+.idea/
+*.swp
+.DS_Store
+.sass-cache/
+.cache/
