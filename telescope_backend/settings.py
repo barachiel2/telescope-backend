@@ -27,8 +27,9 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'rest_framework',  # Django REST framework
-    'portfolio',       # The new app
+    'django.contrib.gis',
+    'rest_framework',
+    'portfolio',
 ]
 
 MIDDLEWARE = [
@@ -67,12 +68,12 @@ WSGI_APPLICATION = 'telescope_backend.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.postgresql',
-        'NAME': os.getenv('DB_NAME'),
-        'USER': os.getenv('DB_USER'),
-        'PASSWORD': os.getenv('DB_PASSWORD'),
-        'HOST': os.getenv('DB_HOST'),
-        'PORT': os.getenv('DB_PORT', '5432'),
+        'ENGINE': 'django.contrib.gis.db.backends.postgis',
+        'NAME': 'postgres',  
+        'USER': 'postgres',  
+        'PASSWORD': 'postgres',  
+        'HOST': 'db',  # As we're using Docker
+        'PORT': '5432',  
     }
 }
 

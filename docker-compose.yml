@@ -2,7 +2,7 @@ version: '3.8'
 
 services:
   db:
-    image: postgres:13
+    image: postgis/postgis:13-3.1  # Use the PostGIS image with PostgreSQL 13 and PostGIS 3.1
     environment:
       POSTGRES_DB: postgres
       POSTGRES_USER: postgres
@@ -10,7 +10,7 @@ services:
     ports:
       - "5432:5432"
     volumes:
-      - postgres_data:/var/lib/postgresql/data
+      - postgres_data:/var/lib/postgresql/data  # Persist PostgreSQL data
 
   web:
     build: .

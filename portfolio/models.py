@@ -1,10 +1,11 @@
-from django.db import models
+from django.contrib.gis.db import models
 from django.contrib.auth.models import User
 
 class Portfolio(models.Model):
     name = models.CharField(max_length=255)
-    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='portfolios')
+    owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='portfolios', blank=True, null=True)
     geographic_region = models.CharField(max_length=255, default='Unknown Region')
+    location = models.PointField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
@@ -18,6 +19,7 @@ class Property(models.Model):
     construction_year = models.IntegerField()
     square_footage = models.DecimalField(max_digits=10, decimal_places=2)
     representational_image = models.ImageField(upload_to='property_images/', blank=True, null=True)
+    location = models.PointField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
 
