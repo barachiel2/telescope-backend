@@ -1,7 +1,12 @@
 from rest_framework import serializers
-from .models import Portfolio
+from .models import Portfolio, Property
 
 class PortfolioSerializer(serializers.ModelSerializer):
     class Meta:
         model = Portfolio
-        fields = ['id', 'name', 'description', 'created_at', 'updated_at']
+        fields = '__all__'
+
+class PropertySerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Property
+        fields = '__all__'
