@@ -71,11 +71,11 @@ WSGI_APPLICATION = 'telescope_backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.contrib.gis.db.backends.postgis',
-        'NAME': 'postgres',  
-        'USER': 'postgres',  
-        'PASSWORD': 'postgres',  
-        'HOST': 'db',  # As we're using Docker
-        'PORT': '5432',  
+        'NAME': os.getenv('DB_NAME', 'postgres'),
+        'USER': os.getenv('DB_USER', 'postgres'),
+        'PASSWORD': os.getenv('DB_PASSWORD', 'postgres'),
+        'HOST': os.getenv('DB_HOST', 'db'),
+        'PORT': os.getenv('DB_PORT', '5432'),
     }
 }
 
