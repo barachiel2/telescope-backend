@@ -39,6 +39,10 @@ class PropertyViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['GET'])
     def list_properties(self, request):
-        properties = Property.objects.all()
+        portfolio_id = request.query_params.get('portfolio')
+        if portfolio_id:
+            properties = Property.objects.filter(portfolio_id=portfolio_id)
+        else:
+            properties = Property.objects.all()  # Fallback to all properties
         serializer = PropertySerializer(properties, many=True)
         return Response(serializer.data)
