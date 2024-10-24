@@ -5,6 +5,7 @@ class Portfolio(models.Model):
     name = models.CharField(max_length=255)
     owner = models.ForeignKey(User, on_delete=models.CASCADE, related_name='portfolios', blank=True, null=True)
     geographic_region = models.CharField(max_length=255, default='Unknown Region')
+    description = models.TextField(blank=True)
     location = models.PointField(blank=True, null=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
