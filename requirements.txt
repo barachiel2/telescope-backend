@@ -3,3 +3,4 @@ django
 Pillow
 django-rest-framework
 djangorestframework-gis
+django-cors-headers
