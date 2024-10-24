@@ -8,6 +8,13 @@ class PropertyViewSet(viewsets.ModelViewSet):
     queryset = Property.objects.all()
     serializer_class = PropertySerializer
 
+    # Action to return the count of properties for a specific portfolio
+    @action(detail=True, methods=['GET'])
+    def property_count(self, request, pk=None):
+        portfolio_id = pk
+        property_count = Property.objects.filter(portfolio_id=portfolio_id).count()
+        return Response({'property_count': property_count})
+
     @action(detail=False, methods=['POST'])
     def create_property(self, request):
         serializer = PropertySerializer(data=request.data)
